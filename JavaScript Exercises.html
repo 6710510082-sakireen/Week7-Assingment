@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Assignment</title>
+</head>
+<body>
+    <script>
+        // 1. Order Calculator
+        // คำนวณราคาสินค้ารวมก่อนภาษี VAT 7% และราคารวมทั้งหมด
+        function calculateOrder(price, quantity) {
+            let subtotal = price * quantity;
+            let vat = subtotal * 0.07;
+            let total = subtotal + vat;
+            
+            document.write("<h3>1. Order Calculator</h3>");
+            document.write("<p>Price: $" + price + "</p>");
+            document.write("<p>Quantity: " + quantity + "</p>");
+            document.write("<p>Subtotal: $" + subtotal.toFixed(2) + "</p>");
+            document.write("<p>VAT 7%: $" + vat.toFixed(2) + "</p>");
+            document.write("<p>Total: $" + total.toFixed(2) + "</p>");
+            
+            return total;
+        }
+        let myOrderTotal = calculateOrder(200, 3);
+
+        // 2. Delivery Rule
+        // ใช้ if / else if / else เพื่อตัดสินค่าส่งตามยอดซื้อและสถานะสมาชิก
+        function calculateDelivery(totalAmount, isMember) {
+            let deliveryFee = 0;
+            if (totalAmount > 500) {
+                deliveryFee = 0;
+            } else if (isMember) {
+                deliveryFee = 30;
+            } else {
+                deliveryFee = 50;
+            }
+            
+            document.write("<h3>2. Delivery Rule</h3>");
+            document.write("<p>Delivery Fee: $" + deliveryFee + "</p>");
+            return deliveryFee;
+        }
+        calculateDelivery(myOrderTotal, true);
+
+        // 3. Cart Total
+        // ใช้ Array และ Loop เพื่อรวมราคาสินค้าทั้งหมดในตะกร้า
+        let cartPrices = [60, 45, 70, 150];
+        let cartTotal = 0;
+        for (let i = 0; i < cartPrices.length; i++) {
+            cartTotal += cartPrices[i];
+        }
+        
+        document.write("<h3>3. Cart Total</h3>");
+        document.write("<p>Cart Total: $" + cartTotal.toFixed(2) + "</p>");
+
+        // 4. Discount Function
+        // ฟังก์ชันคำนวณราคาสินค้าหลังหักส่วนลดตามเปอร์เซ็นต์
+        function applyDiscount(amount, percentage) {
+            let discount = amount * (percentage / 100);
+            let finalPrice = amount - discount;
+            
+            document.write("<h3>4. Discount Function</h3>");
+            document.write("<p>Original Price: $" + amount.toFixed(2) + "</p>");
+            document.write("<p>Discount: " + percentage + "%</p>");
+            document.write("<p>Final Price: $" + finalPrice.toFixed(2) + "</p>");
+            return finalPrice;
+        }
+        applyDiscount(1000, 15);
+
+        // 5. Product Object
+        // สร้าง Array ของ Product Objects และวนลูปแสดงชื่อกับราคาสินค้า
+        let catalogue = [
+            { name: "Laptop", price: 1200 },
+            { name: "Smartphone", price: 800 }
+        ];
+        
+        document.write("<h3>5. Product Object</h3>");
+        for (let i = 0; i < catalogue.length; i++) {
+            document.write("<p>" + catalogue[i].name + ": $" + catalogue[i].price.toFixed(2) + "</p>");
+        }
+
+        // AI Log:
+        // Used AI to generate and simplify JavaScript logic for variables,
+        // conditions, loops, functions, and objects.
+    </script>
+</body>
+</html>
